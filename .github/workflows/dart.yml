@@ -16,14 +16,14 @@ jobs:
           channel: 'stable'
           cache: true
           
-      - name: Install dependencies & Build APK
+      - name: Build APK
         run: |
+          cd Gestion-Espoir/Gestion-Espoir
           flutter pub get
           flutter build apk --release --target=lib/main.dart
-        working-directory: Gestion-Espoir
           
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: Gestion-Espoir/build/app/outputs/flutter-apk/app-release.apk
+          path: Gestion-Espoir/Gestion-Espoir/build/app/outputs/flutter-apk/app-release.apk
