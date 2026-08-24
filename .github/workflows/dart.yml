@@ -16,14 +16,12 @@ jobs:
           channel: 'stable'
           cache: true
           
-      - name: Install dependencies
-        run: flutter pub get
-        working-directory: Gestion-Espoir
-        
-      - name: Build APK
-        run: flutter build apk --release --target=lib/main.dart
-        working-directory: Gestion-Espoir
-        
+      - name: Install dependencies & Build APK
+        run: |
+          cd Gestion-Espoir
+          flutter pub get
+          flutter build apk --release --target=lib/main.dart
+          
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
