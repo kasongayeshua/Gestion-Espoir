@@ -16,11 +16,9 @@ jobs:
           channel: 'stable'
           cache: true
           
-      - name: Install dependencies & Build APK
-        run: |
-          flutter pub get
-          flutter build apk --release --target=main.dart
-          
+      - run: flutter pub get
+      - run: flutter build apk --release --target=lib/main.dart
+      
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
         with:
